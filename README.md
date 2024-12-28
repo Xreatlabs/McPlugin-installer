@@ -176,16 +176,6 @@ The Minecraft community for inspiration and feedback.
 
 
 ---
-
 Developed with ❤️ by XreatLabs
 
 ---
-
-### How to Use This README.md
-
-1. Save the above content into a `README.md` file in your repository.
-2. Push the changes to your GitHub repository:
-   ```bash
-   git add README.md
-   git commit -m "Add README documentation"
-   git push origin main

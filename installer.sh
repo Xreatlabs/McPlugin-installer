@@ -1,7 +1,7 @@
 #!/bin/bash
 
 clear
-# Ensure required tools are installed
+
 if ! command -v curl &> /dev/null; then
   echo "curl is required but not installed. Installing..."
   sudo apt update && sudo apt install -y curl
@@ -12,11 +12,10 @@ if ! command -v jq &> /dev/null; then
   sudo apt update && sudo apt install -y jq
 fi
 
-# Directories for downloaded resources
 RESOURCE_DIR="resources"
 mkdir -p "$RESOURCE_DIR"
 
-# Function to clear the terminal and display the header
+
 clear_screen() {
   clear
   echo "============================="
@@ -24,7 +23,6 @@ clear_screen() {
   echo "============================="
 }
 
-# Function to install from SpigotMC (Spiget API)
 install_from_spigot() {
   local resource_name=$1
   echo "Searching for \"$resource_name\" on SpigotMC..."
@@ -44,7 +42,6 @@ install_from_spigot() {
   fi
 }
 
-# Function to install from Hangar
 install_from_hangar() {
   local resource_name=$1
   echo "Searching for \"$resource_name\" on Hangar..."
@@ -63,7 +60,6 @@ install_from_hangar() {
   fi
 }
 
-# Function to install from Modrinth
 install_from_modrinth() {
   local resource_name=$1
   echo "Searching for \"$resource_name\" on Modrinth..."
@@ -84,7 +80,6 @@ install_from_modrinth() {
   fi
 }
 
-# Unified installation function
 install_resource() {
   clear_screen
   echo "🔍 Unified Search: SpigotMC, Hangar, Modrinth"
@@ -92,26 +87,25 @@ install_resource() {
 
   echo "Attempting to install \"$resource_name\"..."
   
-  # Try SpigotMC
+
   install_from_spigot "$resource_name" && return
 
-  # Try Hangar
+
   install_from_hangar "$resource_name" && return
 
-  # Try Modrinth
+  
   install_from_modrinth "$resource_name" && return
 
   echo "❌ Resource \"$resource_name\" could not be found on any platform."
 }
 
-# Function to display the resource directory
 show_downloaded_resources() {
   clear_screen
   echo "📂 Downloaded Resources in $RESOURCE_DIR:"
   ls "$RESOURCE_DIR" || echo "No resources found."
 }
 
-# Main menu loop
+# Main menu 
 while true; do
   clear_screen
   echo "1️⃣  Install Plugin or Mod (Unified Search)"
